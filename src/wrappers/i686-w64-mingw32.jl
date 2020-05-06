@@ -5,6 +5,7 @@ export libuv
 PATH = ""
 LIBPATH = ""
 LIBPATH_env = "PATH"
+LIBPATH_default = ""
 
 # Relative path to `libuv`
 const libuv_splitpath = ["bin", "libuv-2.dll"]

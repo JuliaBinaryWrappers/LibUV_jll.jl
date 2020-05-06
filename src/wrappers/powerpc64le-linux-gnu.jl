@@ -5,6 +5,7 @@ export libuv
 PATH = ""
 LIBPATH = ""
 LIBPATH_env = "LD_LIBRARY_PATH"
+LIBPATH_default = ""
 
 # Relative path to `libuv`
 const libuv_splitpath = ["lib", "libuv.so"]
