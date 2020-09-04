@@ -21,19 +21,22 @@ libuv_handle = C_NULL
 const libuv = "libuv.so.2"
 
 
+# Inform that the wrapper is available for this platform
+wrapper_available = true
+
 """
 Open all libraries
 """
 function __init__()
-    global artifact_dir = abspath(artifact"LibUV")
+    # This either calls `@artifact_str()`, or returns a constant string if we're overridden.
+    global artifact_dir = find_artifact_dir()
 
-    # Initialize PATH and LIBPATH environment variable listings
     global PATH_list, LIBPATH_list
     global libuv_path = normpath(joinpath(artifact_dir, libuv_splitpath...))
 
     # Manually `dlopen()` this right now so that future invocations
     # of `ccall` with its `SONAME` will find this path immediately.
-    global libuv_handle = dlopen(libuv_path)
+    global libuv_handle = dlopen(libuv_path, RTLD_LAZY | RTLD_DEEPBIND)
     push!(LIBPATH_list, dirname(libuv_path))
 
     # Filter out duplicate and empty entries in our PATH and LIBPATH entries
@@ -44,4 +47,3 @@ function __init__()
 
     
 end  # __init__()
-
