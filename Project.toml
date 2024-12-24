@@ -1,6 +1,6 @@
 name = "LibUV_jll"
 uuid = "183b4373-6708-53ba-ad28-60e28bb38547"
-version = "2.0.1+19"
+version = "2.0.1+20"
 
 [deps]
 JLLWrappers = "692b3bcd-3c85-4b1f-b108-f13ce0eb3210"
